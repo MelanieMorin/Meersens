@@ -25,9 +25,10 @@ app.post('/watch', (req, res) => {
     if (ruleService.ruleIsInEffect(foundRule)) {
       if (!!req.body.coordinates) {
         try {
-          res.status(200).send(meersensService.watchData(foundRule, req.body.coordinates));
+          const watchDataResult = meersensService.watchData(foundRule, req.body.coordinates);
+          res.status(200).send(watchDataResult);
         } catch(error) {
-          res.status(500).send(error);
+          res.send(error);
         }
       } 
       else {
