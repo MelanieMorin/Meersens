@@ -47,7 +47,7 @@ Permet de surveiller les données en temps réelles remontées par les API Meers
 ```
 {
   "name": "Healthy rule",
-  "coordinates": { "lat": 48.8534, "lon": 2.3488 }
+  "coordinates": { "lat": 48.8534, "lng": 2.3488 }
 }
 ```
 
