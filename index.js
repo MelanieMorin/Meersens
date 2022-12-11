@@ -25,12 +25,19 @@ app.post('/watch', (req, res) => {
     if (ruleService.ruleIsInEffect(foundRule)) {
       if (!!req.body.coordinates) {
         try {
-          const watchDataResult = meersensService.watchData(foundRule, req.body.coordinates);
-          res.status(200).send(watchDataResult);
-        } catch(error) {
+          const watchDataPromise = new Promise((resolve, reject) => {
+            const watchDataResult = meersensService.watchData(foundRule, req.body.coordinates);
+            if (watchDataResult) {
+              resolve(watchDataResult);
+            }
+          });
+          watchDataPromise.then(watchDataResult => {
+            res.status(200).send(watchDataResult);
+          });
+        } catch (error) {
           res.send(error);
         }
-      } 
+      }
       else {
         // bad request : data cannot be checked
         res.status(400).send("Missing parameter 'coordinates'");
