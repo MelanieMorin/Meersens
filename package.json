@@ -3,12 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
+    "assert": "^2.0.0",
     "axios": "^1.2.1",
     "express": "^4.17.1",
+    "mocha": "^10.1.0",
     "store": "^2.0.12",
     "uuid": "^9.0.0"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "mocha"
   }
 }

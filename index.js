@@ -22,7 +22,7 @@ app.post('/watch', (req, res) => {
   // check if rule exists and is in effect
   const foundRule = ruleService.get(req.body.name);
   if (!!foundRule) {
-    if (ruleService.ruleIsInEffect(foundRule)) {
+    if (ruleService.ruleIsInEffect(foundRule, Date.now())) {
       if (!!req.body.coordinates) {
         try {
           const watchDataPromise = new Promise((resolve, reject) => {

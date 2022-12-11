@@ -17,8 +17,7 @@ module.exports = class RuleService {
     return this.getAll().find(rule => rule.name === ruleName);
   }
 
-  ruleIsInEffect(rule) {
-    const nowDate = Date.now();
+  ruleIsInEffect(rule, date) {
 
     // check if rule has a date criterium
     const ruleDateCriterium = (rule.criteria || []).find(c => c.hasOwnProperty('$date'));
@@ -30,7 +29,7 @@ module.exports = class RuleService {
       const ruleEndDate = new Date(ruleDateObject.before);
 
       // returns true if rule validity includes today's date
-      return nowDate > ruleStartDate && nowDate < ruleEndDate;
+      return date > ruleStartDate && date < ruleEndDate;
     }
     else {
       return false;
