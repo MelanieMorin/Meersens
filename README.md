@@ -54,7 +54,7 @@ Permet de surveiller les données en temps réelles remontées par les API Meers
 Format de retour si aucune alerte à remonter :
 ```
 {
-  "status": "ALERT"
+  "status": "OK"
 }
 
 ```
@@ -62,7 +62,7 @@ Format de retour si aucune alerte à remonter :
 Format de retour en cas d'alerte :
 ```
 {
-  "status": "OK"
+  "status": "ALERT"
 }
 
 ```
